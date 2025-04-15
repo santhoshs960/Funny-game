@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const base = "rock";
+        const metal = "scissor";
+        const dummy = "paper";
+            
+        function getComputerChoice(){
+            let choose = Math.floor(Math.random()*3);
+            if (choose == 0){
+                console.log(base);
+            } else if (choose == 1) {
+                console.log(metal);
+            } else {
+                console.log(dummy);
+            }
+        }
+            
+        function getHumanChoice(){
+            let user = prompt("enter any number");
+            if (user == 0){
+                console.log(base);
+            } else if (user == 1) {
+                console.log(metal);
+            } else {
+                console.log(dummy)
+            }
+
+        
+        }
+        getHumanChoice()
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
