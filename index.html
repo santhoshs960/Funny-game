@@ -12,29 +12,82 @@
         function getComputerChoice(){
             let choose = Math.floor(Math.random()*3);
             if (choose == 0){
-                console.log(base);
+                return base;
             } else if (choose == 1) {
-                console.log(metal);
+                return metal;
             } else {
-                console.log(dummy);
+                return dummy;
             }
         }
             
         function getHumanChoice(){
             let user = prompt("enter any number");
             if (user == 0){
-                console.log(base);
+               return base;
             } else if (user == 1) {
-                console.log(metal);
+               return metal;
             } else {
-                console.log(dummy)
+               return dummy;
             }
 
-        
         }
-        getHumanChoice()
         
+        let input = getHumanChoice();
+        let manualInput = getComputerChoice();
+        console.log(input);
+        console.log(manualInput);
+
+        let humanScore = 0;
+        let computerScore = 0;
+
         
+        let tie = "it's a tie";
+        let won = "you've won";
+        let lose = "you loss";
+        
+        function playdecide(){
+
+          if (input == manualInput){
+            alert(tie);
+          } else if (input == base) {
+                if (manualInput == metal){
+                    alert(won);
+                } else {
+                    alert(lose);
+                }
+          } else if (input == metal) {
+                if (manualInput == dummy) {
+                    alert(won);
+                } else {
+                    alert(lose);
+                }
+          } else if (input == dummy){
+                if (manualInput == base){
+                    alert(won);
+                } else {
+                    alert(lose);
+                }
+          }
+        }
+        function playRound(){
+            
+            for (round = 0; round < 5;round++){
+                let result = playdecide();    
+                if (result == tie) {
+                    humanScore += 0;
+                    computerScore += 0;
+                } else if (result == won) {
+                    humanScore += 1;
+                    computerScore += 0;
+                } else if (result == lose){
+                    humanScore += 0;
+                    computerScore += 1;
+                }
+            }
+        }
+        playRound()
+    
+    
     </script>
 </head>
 <body>
