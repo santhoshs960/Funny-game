@@ -19,24 +19,19 @@
                 return dummy;
             }
         }
-            
-        function getHumanChoice(){
+        
+         function getHumanChoice(){
             let user = prompt("enter any number");
             if (user == 0){
                return base;
             } else if (user == 1) {
                return metal;
-            } else {
+            } else if (user > 1){
                return dummy;
             }
 
-        }
+         }
         
-        let input = getHumanChoice();
-        let manualInput = getComputerChoice();
-        console.log(input);
-        console.log(manualInput);
-
         let humanScore = 0;
         let computerScore = 0;
 
@@ -45,45 +40,61 @@
         let won = "you've won";
         let lose = "you loss";
         
-        function playdecide(){
+        function playdecide(manualInput,input){
 
-          if (input == manualInput){
+          if (manualInput == input){
             alert(tie);
-          } else if (input == base) {
-                if (manualInput == metal){
+            return tie;
+          } else if (manualInput == base) {
+                if (input == metal){
                     alert(won);
+                    return won;
                 } else {
                     alert(lose);
+                    return lose;
                 }
-          } else if (input == metal) {
-                if (manualInput == dummy) {
+          } else if (manualInput == metal) {
+                if (input == dummy) {
                     alert(won);
+                    return won;
                 } else {
                     alert(lose);
+                    return lose;
                 }
-          } else if (input == dummy){
-                if (manualInput == base){
+          } else if (manualInput == dummy){
+                if (input == base){
                     alert(won);
+                    return won;
                 } else {
                     alert(lose);
+                    return lose;
                 }
           }
         }
         function playRound(){
-            
-            for (round = 0; round < 5;round++){
-                let result = playdecide();    
-                if (result == tie) {
-                    humanScore += 0;
-                    computerScore += 0;
-                } else if (result == won) {
-                    humanScore += 1;
-                    computerScore += 0;
-                } else if (result == lose){
-                    humanScore += 0;
-                    computerScore += 1;
+         
+                for (i = 0; i < 5;i++){
+                    let manualInput = getHumanChoice();
+                    let input = getComputerChoice();
+                    console.log(manualInput);
+                    console.log(input);
+                    let result = playdecide(manualInput,input);
+                        
+                    if (result == won) {
+                        humanScore += 1;    
+                    } else if (result == lose) {
+                        computerScore += 1;
+                    }
                 }
-            }
+                console.log("your score is : " + humanScore);
+                console.log("opponent score is : " + computerScore);
+                if (humanScore == computerScore){
+                    alert("close game! it's a tie");
+                } else if (humanScore > computerScore){
+                    alert("congratulations yuo've won");
+                } else {
+                    alert("haha you loss!");
+                }
         }
         playRound()
     
