@@ -4,104 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>
-        const base = "rock";
-        const metal = "scissor";
-        const dummy = "paper";
+    <script src="script.js" defer></script>
+    <style>
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .button {
+            margin-top: auto;
+            gap: 15px;
+            display: flex;
+        }
+        button {
+            width: 90px;
+            height: 30px;
+        }
+        .heading {
+            margin-top: 20px;
+        }
+        .score {
+            display: flex;
+            gap: 25px;
+            margin: 45px auto 250px;
+        }
+        #rock {
+            background-color: aqua;
+        }
+        #paper {
+            background-color: blue;
+        }
+        #scissor {
+            background-color: red;
+            color: white;
             
-        function getComputerChoice(){
-            let choose = Math.floor(Math.random()*3);
-            if (choose == 0){
-                return base;
-            } else if (choose == 1) {
-                return metal;
-            } else {
-                return dummy;
-            }
         }
-        
-         function getHumanChoice(){
-            let user = prompt("enter any number");
-            if (user == 0){
-               return base;
-            } else if (user == 1) {
-               return metal;
-            } else if (user > 1){
-               return dummy;
-            }
 
-         }
-        
-        let humanScore = 0;
-        let computerScore = 0;
-
-        
-        let tie = "it's a tie";
-        let won = "you've won";
-        let lose = "you loss";
-        
-        function playdecide(manualInput,input){
-
-          if (manualInput == input){
-            alert(tie);
-            return tie;
-          } else if (manualInput == base) {
-                if (input == metal){
-                    alert(won);
-                    return won;
-                } else {
-                    alert(lose);
-                    return lose;
-                }
-          } else if (manualInput == metal) {
-                if (input == dummy) {
-                    alert(won);
-                    return won;
-                } else {
-                    alert(lose);
-                    return lose;
-                }
-          } else if (manualInput == dummy){
-                if (input == base){
-                    alert(won);
-                    return won;
-                } else {
-                    alert(lose);
-                    return lose;
-                }
-          }
+        button:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+            transition: all 0.2s;
         }
-        function playRound(){
-         
-                for (i = 0; i < 5;i++){
-                    let manualInput = getHumanChoice();
-                    let input = getComputerChoice();
-                    console.log(manualInput);
-                    console.log(input);
-                    let result = playdecide(manualInput,input);
-                        
-                    if (result == won) {
-                        humanScore += 1;    
-                    } else if (result == lose) {
-                        computerScore += 1;
-                    }
-                }
-                console.log("your score is : " + humanScore);
-                console.log("opponent score is : " + computerScore);
-                if (humanScore == computerScore){
-                    alert("close game! it's a tie");
-                } else if (humanScore > computerScore){
-                    alert("congratulations yuo've won");
-                } else {
-                    alert("haha you loss!");
-                }
-        }
-        playRound()
-    
-    
-    </script>
+
+    </style>
 </head>
+
+
 <body>
-    
+    <div class="container">
+        <div class="heading">
+            <h1>ROCK PAPER & SCISSOR</h1>
+        </div>
+        <div class="button">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissor">Scissor</button>
+        </div>    
+        <div class="score">
+            <div id="hscore">your score : 0</div>
+            <div id="cscore">computer score : 0</div>
+        </div>     
+    </div>    
 </body>
 </html>
